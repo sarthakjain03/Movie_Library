@@ -32,8 +32,8 @@ const Navbar = () => {
 
     return (
       <div className='w-full fixed shadow-md bg-black top-0 left-0'>
-        <div className='md:flex justify-between items-center p-5'>
-            <h1 className='text-2xl font-bold text-white pl-5 cursor-pointer'>
+        <div className='flex justify-between items-center py-5 px-9'>
+            <h1 className='text-2xl font-bold text-white cursor-pointer'>
                 <span className='text-yellow-400'>Movie</span>Lib
             </h1>
             <div className={`${mobileNav ? 'absolute right-8 top-4' : 'hidden'}`}>
@@ -48,7 +48,7 @@ const Navbar = () => {
                     )}
                 </button>
             </div>
-            <div className='flex justify-between items-center text-white w-1/3 pr-5'>
+            <div className='flex justify-between items-center text-white w-1/3'>
                 <NavLink 
                     to={'/movies'}
                     key={'movies'}
