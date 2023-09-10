@@ -1,0 +1,88 @@
+import React, { useState, useEffect } from 'react'
+import { NavLink } from 'react-router-dom'
+
+import { useStateContext } from '../context/ContextProvider'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFilm, faTv, faArrowTrendUp, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+
+const Navbar = () => {
+    const { screenSize, setScreenSize } = useStateContext()
+    const [ mobileNav, setMobileNav ] = useState(false)
+    const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => setScreenSize(window.innerWidth)
+        window.addEventListener('resize', handleResize)
+        handleResize()
+        return () => window.removeEventListener('resize', handleResize)
+    })
+
+    useEffect(() => {
+        if(screenSize <= 900){
+          setMobileNav(true)
+        } else {
+          setMobileNav(false)
+        }
+    }, [screenSize])
+
+    const handleToggleMobile = () => {
+        setMobileMenuOpen(!mobileMenuOpen)
+    }
+
+    return (
+      <div className='w-full fixed shadow-md bg-black top-0 left-0'>
+        <div className='md:flex justify-between items-center p-5'>
+            <h1 className='text-2xl font-bold text-white pl-5 cursor-pointer'>
+                <span className='text-yellow-400'>Movie</span>Lib
+            </h1>
+            <div className={`${mobileNav ? 'absolute right-8 top-4' : 'hidden'}`}>
+                <button
+                    className='text-white hover:text-black rounded p-2 hover:bg-white'
+                    onClick={handleToggleMobile}
+                >
+                    {mobileMenuOpen ? (
+                        <FontAwesomeIcon icon={faTimes} size='lg' />
+                    ) : (
+                        <FontAwesomeIcon icon={faBars} size='lg' />
+                    )}
+                </button>
+            </div>
+            <div className='flex justify-between items-center text-white w-1/3 pr-5'>
+                <NavLink 
+                    to={'/movies'}
+                    key={'movies'}
+                    onClick={() => {}}
+                >
+                    <div className='flex justify-center items-center flex-col'>
+                        <FontAwesomeIcon icon={faFilm} style={{color: '#fff'}} className='pb-1 text-xl'/>
+                        <p className='font-semibold'>Movies</p>
+                    </div>
+                </NavLink>
+                <NavLink 
+                    to={'/tvseries'}
+                    key={'tvseries'}
+                    onClick={() => {}}
+                >
+                    <div className='flex justify-center items-center flex-col'>
+                        <FontAwesomeIcon icon={faTv} style={{color: "#fff"}} className='pb-1 text-xl'/>
+                        <p className='font-semibold'>TV Series</p>
+                    </div>
+                </NavLink>
+                <NavLink 
+                    to={'/trending'}
+                    key={'trending'}
+                    onClick={() => {}}
+                >
+                    <div className='flex justify-center items-center flex-col'>
+                        <FontAwesomeIcon icon={faArrowTrendUp} style={{color: "#fff"}} className='pb-1 text-xl'/>
+                        <p className='font-semibold'>Trending</p>
+                    </div>
+                </NavLink>
+            </div>
+        </div>
+      </div>
+    )
+}
+
+export default Navbar
