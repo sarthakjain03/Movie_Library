@@ -1,20 +1,28 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import { Trending } from "./pages"
+import { Movies, Trending, TvSeries } from "./pages"
 
-import { useStateContext } from "./context/ContextProvider"
+// import { useStateContext } from "./context/ContextProvider"
+import { Navbar, SearchBar } from "./components";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-black">
       <BrowserRouter>
-        <div>
-          <Routes>
+        <div className="min-h-screen w-full">
+          <div className="md:static w-full fixed">
+            <Navbar />
+          </div>
+          <div>
+            <Routes>
             
-            <Route path="/" element={ <Navigate to="/trending" /> } exact />
-            <Route path="/trending" element={<Trending />} />
+              <Route path="/" element={ <Navigate to="/trending" /> } exact />
+              <Route path="/trending" element={<Trending />} />
+              <Route path="/tvseries" element={<TvSeries />} />
+              <Route path="/movies" element={<Movies />} />
 
-          </Routes>
+            </Routes>
+          </div>
         </div>
       </BrowserRouter>
     </div>

@@ -1,12 +1,12 @@
 import React from 'react'
-import { SearchBar, MovieList, Navbar} from "../components";
+import { SearchBar, MovieList } from "../components";
 
 import { useStateContext } from '../context/ContextProvider';
 
 const Trending = () => {
   return (
     <div>
-      <Navbar />
+      
     </div>
   )
 }

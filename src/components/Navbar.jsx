@@ -31,7 +31,7 @@ const Navbar = () => {
     }
 
     return (
-      <div className='w-full fixed shadow-md bg-black top-0 left-0'>
+      <div className='shadow-md bg-gray-800 top-0 left-0'>
         <div className='flex justify-between items-center py-5 px-9'>
             <h1 className='text-2xl font-bold text-white cursor-pointer'>
                 <span className='text-yellow-400'>Movie</span>Lib
