@@ -3,7 +3,7 @@ import { SearchBar, MovieList, Navbar} from "../components";
 
 import { useStateContext } from '../context/ContextProvider';
 
-const LandingPage = () => {
+const Trending = () => {
   return (
     <div>
       <Navbar />
@@ -11,4 +11,4 @@ const LandingPage = () => {
   )
 }
 
-export default LandingPage
+export default Trending

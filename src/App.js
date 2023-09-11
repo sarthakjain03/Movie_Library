@@ -1,6 +1,6 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import LandingPage from "./pages/LandingPage"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { Trending } from "./pages"
 
 import { useStateContext } from "./context/ContextProvider"
 
@@ -10,8 +10,9 @@ const App = () => {
       <BrowserRouter>
         <div>
           <Routes>
-
-            <Route path="/" element={<LandingPage />} />
+            
+            <Route path="/" element={ <Navigate to="/trending" /> } exact />
+            <Route path="/trending" element={<Trending />} />
 
           </Routes>
         </div>
