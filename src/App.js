@@ -13,6 +13,9 @@ const App = () => {
           <div className="md:static w-full fixed">
             <Navbar />
           </div>
+          <div className="w-full flex justify-center items-center mt-5">
+            <SearchBar />
+          </div>
           <div>
             <Routes>
             
