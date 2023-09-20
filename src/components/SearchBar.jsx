@@ -32,7 +32,7 @@ const SearchBar = () => {
           inputProps={{
             sx: {
               color: "white",
-              fontSize: "20px",
+              fontSize: "15px",
             },
           }}
         />

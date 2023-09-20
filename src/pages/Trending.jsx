@@ -1,5 +1,4 @@
 import React from 'react'
-import { SearchBar, MovieList } from "../components";
 
 import { useStateContext } from '../context/ContextProvider';
 
