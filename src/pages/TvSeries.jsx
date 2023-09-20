@@ -1,8 +1,12 @@
 import React from 'react'
 
+import { Header } from '../components'
+
 const TvSeries = () => {
   return (
-    <div>TvSeries</div>
+    <div>
+      <Header title="Tv Series" />
+    </div>
   )
 }
 
