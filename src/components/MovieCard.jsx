@@ -2,7 +2,7 @@ import React from 'react'
 
 const MovieCard = () => {
   return (
-    <div>MovieCard</div>
+    <div className='text-white'>MovieCard</div>
   )
 }
 
