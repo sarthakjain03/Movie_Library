@@ -1,27 +1,36 @@
 import React, { useEffect, useState } from 'react'
+import { Button } from '@mui/material';
 import axios from 'axios'
 
 import { MovieCard, Header } from '../components'
-// import { useStateContext } from '../context/ContextProvider';
+import { useStateContext } from '../context/ContextProvider';
+
 
 const Trending = () => {
 
+  const { contentType, changeContentType } = useStateContext()
   const [content, setContent] = useState([])
 
-  const fetchTrending = async () => {
-    const { data } = await axios.get(`https://api.themoviedb.org/3/trending/all/week?api_key=${process.env.REACT_APP_API_KEY}`)
+  const fetchTrending = async (currentContentType) => {
+    const { data } = await axios.get(`https://api.themoviedb.org/3/trending/${currentContentType}/week?api_key=${process.env.REACT_APP_API_KEY}`)
 
-    console.log(data.results)
     setContent(data.results)
   }
 
   useEffect(() => {
-    fetchTrending()
-  }, [])
+    fetchTrending(contentType)
+  }, [contentType])
 
   return (
     <div>
       <Header title="Trending" />
+      <div className='flex justify-center'>
+        <div className='flex justify-around items-center my-4 md:w-[30%]'>
+          <button type='button' className='text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium' onClick={() => changeContentType('all')}>ALL</button>
+          <button type='button' className='text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium' onClick={() => changeContentType('movie')}>MOVIES</button>
+          <button type='button' className='text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium' onClick={() => changeContentType('tv')}>TV SERIES</button>
+        </div>
+      </div>
       <div className='flex flex-wrap justify-center items-center'>
         { 
           content && content.map((item) => (

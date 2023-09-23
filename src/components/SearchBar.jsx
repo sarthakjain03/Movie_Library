@@ -36,12 +36,12 @@ const SearchBar = () => {
             },
           }}
         />
-        <Button variant="outlined">
-          <SearchIcon fontSize="large" />
+        <Button variant="outlined" startIcon={<SearchIcon />}>
+          {/* <SearchIcon fontSize="large" /> */}
           Movies
         </Button>
-        <Button variant="outlined">
-          <SearchIcon fontSize="large" />
+        <Button variant="outlined" startIcon={<SearchIcon />}>
+          {/* <SearchIcon fontSize="large" /> */}
           TV Series
         </Button>
       </div>
