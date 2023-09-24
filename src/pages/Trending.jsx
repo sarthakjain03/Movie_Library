@@ -27,7 +27,8 @@ const Trending = () => {
 
   useEffect(() => {
     handleTrendingLinks("all")
-  })
+    changeContentType("all")
+  }, [])
 
   const normalLink =
     "text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium";
