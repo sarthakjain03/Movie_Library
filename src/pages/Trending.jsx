@@ -12,6 +12,11 @@ const Trending = () => {
     handleTrendingLinks,
   } = useStateContext();
   const [content, setContent] = useState([]);
+  
+  const normalLink =
+    "text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium";
+  const activeLink =
+    "border-[1px] py-1 px-5 rounded-md text-black bg-white font-pagehead font-medium";
 
   const fetchTrending = async (currentContentType) => {
     const { data } = await axios.get(
@@ -29,11 +34,6 @@ const Trending = () => {
     handleTrendingLinks("all")
     changeContentType("all")
   }, [])
-
-  const normalLink =
-    "text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium";
-  const activeLink =
-    "border-[1px] py-1 px-5 rounded-md text-black bg-white font-pagehead font-medium";
 
   return (
     <div>
