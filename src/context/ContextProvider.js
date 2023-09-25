@@ -29,7 +29,6 @@ export const ContextProvider = ({children}) => {
                 changeContentType, 
                 activeTrendingLink, setActiveTrendingLink, 
                 handleTrendingLinks,
-                 
             }}
         >
             {children}

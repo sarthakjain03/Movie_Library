@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import axios from 'axios'
 
 import { Chip } from '@mui/material'
@@ -15,6 +15,7 @@ const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres}) =>
 
   useEffect(() => {
     fetchGenres()
+     // eslint-disable-next-line
   }, [])
 
   const handleAddSelected = (genre) => {
@@ -28,7 +29,7 @@ const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres}) =>
   }
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center px-[70px]">
       <div className="flex flex-wrap justify-center items-center my-3">
         { selectedGenres && selectedGenres.map((genre) => (
           <Chip 

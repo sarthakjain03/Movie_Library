@@ -2,29 +2,25 @@ import React, { useEffect, useState } from "react";
 
 import { Header, Genres, MovieCard } from "../components";
 import axios from "axios";
+import useGenres from "../hooks/useGenres";
 
 const Movies = () => {
   const [movieContent, setMovieContent] = useState([]);
   const [selectedGenres, setSelectedGenres] = useState([])
   const [genres, setGenres] = useState([]);
+  const movieGenreIdsToShow = useGenres(selectedGenres)
 
-  const normalLink =
-    "text-white border-[1px] border-yellow-400 py-1 px-5 rounded-md hover:text-black hover:bg-yellow-400 font-pagehead font-medium m-1";
-  const activeLink =
-    "border-[1px] border-yellow-400 py-1 px-5 rounded-md text-black bg-yellow-400 font-pagehead font-medium m-1";
-
-
-  const fetchMovieList = async () => {
+  const fetchMovieList = async (genreIds) => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genreIds}`
     );
 
     setMovieContent(data.results);
   };
 
   useEffect(() => {
-    fetchMovieList()
-  }, [])
+    fetchMovieList(movieGenreIdsToShow)
+  }, [movieGenreIdsToShow])
 
   return (
     <div>
