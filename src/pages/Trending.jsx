@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { MovieCard, Header } from "../components";
+import { MovieCard, Header, CustomPaging } from "../components";
 import { useStateContext } from "../context/ContextProvider";
 
 const Trending = () => {
@@ -12,27 +12,30 @@ const Trending = () => {
     handleTrendingLinks,
   } = useStateContext();
   const [content, setContent] = useState([]);
+  const [page, setPage] = useState(1)
   
   const normalLink =
     "text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium";
   const activeLink =
     "border-[1px] py-1 px-5 rounded-md text-black bg-white font-pagehead font-medium";
 
-  const fetchTrending = async (currentContentType) => {
+  const fetchTrending = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/trending/${currentContentType}/week?api_key=${process.env.REACT_APP_API_KEY}`
+      `https://api.themoviedb.org/3/trending/${contentType}/week?api_key=${process.env.REACT_APP_API_KEY}&page=${page}`
     );
 
     setContent(data.results);
   };
 
   useEffect(() => {
-    fetchTrending(contentType);
-  }, [contentType]);
+    fetchTrending();
+    // eslint-disable-next-line
+  }, [contentType, page]);
 
   useEffect(() => {
     handleTrendingLinks("all")
     changeContentType("all")
+    // eslint-disable-next-line
   }, [])
 
   return (
@@ -87,6 +90,7 @@ const Trending = () => {
             />
           ))}
       </div>
+      <CustomPaging setPage={setPage} />
     </div>
   );
 };

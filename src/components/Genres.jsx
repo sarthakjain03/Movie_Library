@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import { Chip } from '@mui/material'
 
-const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres}) => {
+const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres, setPage}) => {
 
   const fetchGenres = async () => {
     const { data } = await axios.get(
@@ -21,11 +21,13 @@ const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres}) =>
   const handleAddSelected = (genre) => {
     setSelectedGenres([...selectedGenres, genre])
     setGenres(genres.filter((g) => g.id!==genre.id))
+    setPage(1)
   }
 
   const handleRemoveSelected = (genre) => {
     setSelectedGenres(selectedGenres.filter((g) => g.id!==genre.id))
     setGenres([...genres, genre])
+    setPage(1)
   }
 
   return (

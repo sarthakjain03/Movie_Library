@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { Header, Genres, MovieCard } from "../components";
+import { Header, Genres, MovieCard, CustomPaging } from "../components";
 import axios from "axios";
 import useGenres from "../hooks/useGenres";
 
@@ -9,23 +9,27 @@ const TvSeries = () => {
   const [selectedGenres, setSelectedGenres] = useState([])
   const [genres, setGenres] = useState([]);
   const tvGenreIdsToShow = useGenres(selectedGenres)
+  const [page, setPage] = useState(1)
+  const [numPages, setNumPages] = useState()
 
-  const fetchTvList = async (genreIds) => {
+  const fetchTvList = async () => {
     const { data } = await axios.get(
-      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&with_genres=${genreIds}`
+      `https://api.themoviedb.org/3/discover/tv?api_key=${process.env.REACT_APP_API_KEY}&page=${page}&with_genres=${tvGenreIdsToShow}`
     );
 
     setTvContent(data.results);
+    setNumPages(data.total_pages);
   };
 
   useEffect(() => {
-    fetchTvList(tvGenreIdsToShow)
-  }, [tvGenreIdsToShow])
+    fetchTvList()
+    // eslint-disable-next-line
+  }, [tvGenreIdsToShow, page])
 
   return (
     <div>
       <Header title="Tv Series" />
-      <Genres type='tv' setGenres={setGenres} genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} />
+      <Genres type='tv' setGenres={setGenres} genres={genres} selectedGenres={selectedGenres} setSelectedGenres={setSelectedGenres} setPage={setPage} />
       <div className="flex flex-wrap justify-center items-center">
         {tvContent &&
           tvContent.map((item) => (
@@ -41,6 +45,9 @@ const TvSeries = () => {
             />
           ))}
       </div>
+      { 
+        numPages>1 && <CustomPaging setPage={setPage} numOfPages={numPages} />
+      }
     </div>
   )
 }
