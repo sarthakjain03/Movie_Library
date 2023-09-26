@@ -12,7 +12,7 @@ const darkTheme = createTheme({
 const CustomPaging = ({ setPage, numOfPages = 50 }) => {
     const { currentPage, setCurrentPage } = useStateContext()
 
-    const handlePageChange = (event, page) => {
+    const handlePageChange = (event, page) => { // event handler function
         setPage(page)
         setCurrentPage(page)
         window.scroll(0, 0)
@@ -24,7 +24,8 @@ const CustomPaging = ({ setPage, numOfPages = 50 }) => {
                 <Pagination
                     count={numOfPages}
                     page={currentPage}
-                    onChange={handlePageChange}
+                    onChange={handlePageChange} // the page is automatically passed as the required 'page' argument in handlePageChange.
+                    // here, the event is page change.
                     variant="outlined"
                     color="info"
                     hidePrevButton
