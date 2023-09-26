@@ -12,6 +12,7 @@ export const ContextProvider = ({children}) => {
     const [contentType, setContentType] = useState('all')
     const [screenSize, setScreenSize] = useState(undefined)
     const [activeTrendingLink, setActiveTrendingLink] = useState(initialTrendingLinks)
+    const [currentPage, setCurrentPage] = useState(1) //for pagination component
 
     const changeContentType = (clicked) => {
         setContentType(clicked)
@@ -29,6 +30,7 @@ export const ContextProvider = ({children}) => {
                 changeContentType, 
                 activeTrendingLink, setActiveTrendingLink, 
                 handleTrendingLinks,
+                currentPage, setCurrentPage,
             }}
         >
             {children}

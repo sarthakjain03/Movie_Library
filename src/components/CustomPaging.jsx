@@ -1,6 +1,8 @@
 import React from "react";
 import { Pagination, createTheme, ThemeProvider } from "@mui/material";
 
+import { useStateContext } from "../context/ContextProvider";
+
 const darkTheme = createTheme({
     palette: {
         mode: "dark",
@@ -8,8 +10,11 @@ const darkTheme = createTheme({
 })
 
 const CustomPaging = ({ setPage, numOfPages = 50 }) => {
-    const handlePageChange = (page) => {
+    const { currentPage, setCurrentPage } = useStateContext()
+
+    const handlePageChange = (event, page) => {
         setPage(page)
+        setCurrentPage(page)
         window.scroll(0, 0)
     }
 
@@ -18,7 +23,8 @@ const CustomPaging = ({ setPage, numOfPages = 50 }) => {
             <ThemeProvider theme={darkTheme}>
                 <Pagination
                     count={numOfPages}
-                    onChange={(e) => handlePageChange(e.target.textContent)}
+                    page={currentPage}
+                    onChange={handlePageChange}
                     variant="outlined"
                     color="info"
                     hidePrevButton

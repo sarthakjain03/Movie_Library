@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 
 import { Chip } from '@mui/material'
+import { useStateContext } from '../context/ContextProvider'
 
 const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres, setPage}) => {
+  const { setCurrentPage } = useStateContext()
 
   const fetchGenres = async () => {
     const { data } = await axios.get(
@@ -21,12 +23,14 @@ const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres, set
   const handleAddSelected = (genre) => {
     setSelectedGenres([...selectedGenres, genre])
     setGenres(genres.filter((g) => g.id!==genre.id))
+    setCurrentPage(1)
     setPage(1)
   }
 
   const handleRemoveSelected = (genre) => {
     setSelectedGenres(selectedGenres.filter((g) => g.id!==genre.id))
     setGenres([...genres, genre])
+    setCurrentPage(1)
     setPage(1)
   }
 
