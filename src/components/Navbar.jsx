@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { useStateContext } from '../context/ContextProvider'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faFilm, faTv, faArrowTrendUp, faBars, faTimes } from '@fortawesome/free-solid-svg-icons'
+import { faFilm, faTv, faArrowTrendUp, faBars, faTimes, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
     const { screenSize, setScreenSize } = useStateContext()
@@ -52,7 +52,7 @@ const Navbar = () => {
                 <NavLink 
                     to={'/movies'}
                     key={'movies'}
-                    onClick={() => {}}
+                    // onClick={() => {}}
                 >
                     <div className='flex justify-center items-center flex-col'>
                         <FontAwesomeIcon icon={faFilm} style={{color: '#fff'}} className='pb-1 text-xl'/>
@@ -62,7 +62,7 @@ const Navbar = () => {
                 <NavLink 
                     to={'/tvseries'}
                     key={'tvseries'}
-                    onClick={() => {}}
+                    // onClick={() => {}}
                 >
                     <div className='flex justify-center items-center flex-col'>
                         <FontAwesomeIcon icon={faTv} style={{color: "#fff"}} className='pb-1 text-xl'/>
@@ -72,11 +72,21 @@ const Navbar = () => {
                 <NavLink 
                     to={'/trending'}
                     key={'trending'}
-                    onClick={() => {}}
+                    // onClick={() => {}}
                 >
                     <div className='flex justify-center items-center flex-col'>
                         <FontAwesomeIcon icon={faArrowTrendUp} style={{color: "#fff"}} className='pb-1 text-xl'/>
                         <p className='font-semibold'>Trending</p>
+                    </div>
+                </NavLink>
+                <NavLink 
+                    to={'/search'}
+                    key={'search'}
+                    // onClick={() => {}}
+                >
+                    <div className='flex justify-center items-center flex-col'>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} style={{color: "#fff"}} className='pb-1 text-xl'/>
+                        <p className='font-semibold'>Search</p>
                     </div>
                 </NavLink>
             </div>

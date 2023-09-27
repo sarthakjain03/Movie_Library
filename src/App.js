@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
-import { Movies, Trending, TvSeries } from "./pages"
+import { Movies, Trending, TvSeries, Search } from "./pages"
 
 // import { useStateContext } from "./context/ContextProvider"
-import { Navbar, SearchBar } from "./components";
+import { Navbar } from "./components";
 
 const App = () => {
   return (
@@ -13,9 +13,6 @@ const App = () => {
           <div className="md:static w-full fixed">
             <Navbar />
           </div>
-          <div className="w-full flex justify-center items-center mt-5">
-            <SearchBar />
-          </div>
           <div>
             <Routes>
             
@@ -23,6 +20,7 @@ const App = () => {
               <Route path="/trending" element={<Trending />} />
               <Route path="/tvseries" element={<TvSeries />} />
               <Route path="/movies" element={<Movies />} />
+              <Route path="/search" element={<Search />} />
 
             </Routes>
           </div>
