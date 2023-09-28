@@ -7,28 +7,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilm, faTv, faArrowTrendUp, faBars, faTimes, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = () => {
-    const { screenSize, setScreenSize } = useStateContext()
-    const [ mobileNav, setMobileNav ] = useState(false)
-    const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
+    // const { screenSize, setScreenSize } = useStateContext()
+    // const [ mobileNav, setMobileNav ] = useState(false)
+    // const [ mobileMenuOpen, setMobileMenuOpen ] = useState(false)
 
-    useEffect(() => {
-        const handleResize = () => setScreenSize(window.innerWidth)
-        window.addEventListener('resize', handleResize)
-        handleResize()
-        return () => window.removeEventListener('resize', handleResize)
-    })
+    // useEffect(() => {
+    //     const handleResize = () => setScreenSize(window.innerWidth)
+    //     window.addEventListener('resize', handleResize)
+    //     handleResize()
+    //     return () => window.removeEventListener('resize', handleResize)
+    // })
 
-    useEffect(() => {
-        if(screenSize <= 900){
-          setMobileNav(true)
-        } else {
-          setMobileNav(false)
-        }
-    }, [screenSize])
+    // useEffect(() => {
+    //     if(screenSize <= 900){
+    //       setMobileNav(true)
+    //     } else {
+    //       setMobileNav(false)
+    //     }
+    // }, [screenSize])
 
-    const handleToggleMobile = () => {
-        setMobileMenuOpen(!mobileMenuOpen)
-    }
+    // const handleToggleMobile = () => {
+    //     setMobileMenuOpen(!mobileMenuOpen)
+    // }
 
     return (
       <div className='shadow-md bg-gray-800 top-0 left-0'>
@@ -36,10 +36,10 @@ const Navbar = () => {
             <h1 className='text-2xl font-bold text-white cursor-pointer'>
                 <span className='text-yellow-400'>Theatre</span>Lib
             </h1>
-            <div className={`${mobileNav ? 'absolute right-8 top-4' : 'hidden'}`}>
+            {/* <div className='hidden'>
                 <button
                     className='text-white hover:text-black rounded p-2 hover:bg-white'
-                    onClick={handleToggleMobile}
+                    onClick={() => {}}
                 >
                     {mobileMenuOpen ? (
                         <FontAwesomeIcon icon={faTimes} size='lg' />
@@ -47,7 +47,7 @@ const Navbar = () => {
                         <FontAwesomeIcon icon={faBars} size='lg' />
                     )}
                 </button>
-            </div>
+            </div> */}
             <div className='flex justify-between items-center text-white w-1/3'>
                 <NavLink 
                     to={'/movies'}

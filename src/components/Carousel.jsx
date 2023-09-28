@@ -18,7 +18,7 @@ const Carousel = ({media_type, id}) => {
              className='rounded-lg mb-2 shadow-md'
             />
             <b className='text-sm'>{c?.name}</b>
-            <b className='text-sm text-gray-400'>{c?.character}</b>
+            {/* <b className='text-sm text-gray-400'>{c?.character}</b> */}
         </div>
     ))
 

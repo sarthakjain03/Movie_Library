@@ -10,7 +10,7 @@ const initialTrendingLinks = {
 
 export const ContextProvider = ({children}) => {
     const [contentType, setContentType] = useState('all')
-    const [screenSize, setScreenSize] = useState(undefined)
+    // const [screenSize, setScreenSize] = useState(undefined)
     const [activeTrendingLink, setActiveTrendingLink] = useState(initialTrendingLinks)
     const [currentPage, setCurrentPage] = useState(1) //for pagination component
 
@@ -25,7 +25,7 @@ export const ContextProvider = ({children}) => {
     return (
         <StateContext.Provider
             value={{
-                screenSize, setScreenSize,
+                // screenSize, setScreenSize,
                 contentType, setContentType,
                 changeContentType, 
                 activeTrendingLink, setActiveTrendingLink, 
