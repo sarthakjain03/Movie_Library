@@ -7,11 +7,12 @@ import { useMediaQuery } from '@mui/material';
 import axios from 'axios';
 import { img_500, unavailable, unavailableLandscape } from '../config';
 import { YouTube } from '@mui/icons-material';
+import Carousel from './Carousel';
 
 const style = {
   zIndex: 100000,
   width: "91%",
-  height: "86%",
+  height: "92%",
   backgroundColor: "#39445a",
   border: "1px solid #282c34",
   borderRadius: 10,
@@ -73,7 +74,7 @@ export default function Details({children, media_type, id}) {
                 <img src={content.poster_path ? `${img_500}/${content.poster_path}` : unavailable} alt={content.title || content.name} className={`object-contain w-[38%] rounded-xl ${mobile ? 'hidden' : 'flex'}`} />
                 <img src={content.backdrop_path ? `${img_500}/${content.backdrop_path}` : unavailableLandscape} alt={content.title || content.name} className={`object-contain rounded-lg ${mobile ? '' : 'hidden'}`} />
 
-                <div className='md:p-0 md:h-full md:w-[58%] p-2 h-[90%] flex flex-col justify-evenly font-sans font-light'>
+                <div className='md:p-0 md:w-[58%] p-2 flex flex-col justify-evenly font-sans font-light'>
                   <span className='md:text-[3.5vw] h-[12%] text-[5vw] flex justify-center items-center'>
                     {content.name || content.title} ({(content.first_air_date || content.release_date || "-----").substring(0, 4)})
                   </span>
@@ -82,10 +83,14 @@ export default function Details({children, media_type, id}) {
                     <i className='pb-2 self-center'>{content.tagline}</i>
                   )}
 
-                  <div className='h-[40%] overflow-y-scroll no-scrollbar p-4 rounded-xl bg-gray-600 shadow-lg'>
-                    <span className='md:text-[22px] flex text-justify'>
+                  <div className='p-3 rounded-xl bg-gray-600 shadow-lg mb-2'>
+                    <span className='text-[15px] flex text-justify'>
                       {content.overview}
                     </span>
+                  </div>
+
+                  <div>
+                    <Carousel media_type={media_type} id={id} />
                   </div>
 
                   <Button
