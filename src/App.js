@@ -1,17 +1,18 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import { Movies, Trending, TvSeries, Search } from "./pages"
-
-// import { useStateContext } from "./context/ContextProvider"
-import { Navbar } from "./components";
+import { useMediaQuery } from "@mui/material";
+import { Navbar, MobileNav } from "./components";
 
 const App = () => {
+  const mobileView = useMediaQuery('(max-width:767px)')
+
   return (
     <div className="bg-black">
       <BrowserRouter>
         <div className="min-h-screen w-full">
-          <div className="md:static w-full fixed">
-            <Navbar />
+          <div className="w-full static">
+            {mobileView ? <MobileNav /> : <Navbar />}
           </div>
           <div>
             <Routes>
