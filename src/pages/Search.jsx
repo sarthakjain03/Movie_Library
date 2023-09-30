@@ -4,6 +4,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import { Header, MovieCard, CustomPaging } from "../components";
 import axios from "axios";
 import { useStateContext } from "../context/ContextProvider";
+import { useMediaQuery } from "@mui/material";
 
 const Search = () => {
     const [page, setPage] = useState(1)
@@ -13,6 +14,7 @@ const Search = () => {
     const [mediaType, setMediaType] = useState('movie')
 
     const { setCurrentPage } = useStateContext()
+    const mobileView = useMediaQuery('(max-width:767px)')
 
     const fetchSearchMovie = async () => {
         const { data } = await axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&query=${searchQuery}&page=${page}`)
@@ -64,13 +66,13 @@ const Search = () => {
       <Header title="Search" />
       <div className="w-full flex justify-center items-center mt-5">
         <ThemeProvider theme={theme}>
-          <div className="w-4/5 flex justify-around">
+          <div className={`md:w-4/5 w-full md:mx-0 mx-5 flex justify-around ${mobileView && 'flex-col'}`}>
             <TextField
               id="filled-search"
               label="Search"
               type="search"
               variant="filled"
-              className="w-2/3"
+              className="md:w-2/3 w-full md:mb-0 mb-2"
               sx={{
                 backgroundColor: "black",
                 border: "1px solid gray",
@@ -88,10 +90,10 @@ const Search = () => {
               }}
               onChange={(event) => setSearchQuery(event.target.value)}
             />
-            <Button variant="outlined" startIcon={<SearchIcon />} onClick={handleSearchMovie}>
+            <Button variant="outlined" startIcon={<SearchIcon />} onClick={handleSearchMovie} sx={mobileView && {marginTop: 3}}>
               Movies
             </Button>
-            <Button variant="outlined" startIcon={<SearchIcon />} onClick={handleSearchTv}>
+            <Button variant="outlined" startIcon={<SearchIcon />} onClick={handleSearchTv} sx={mobileView && {marginTop: 3}}>
               TV Series
             </Button>
           </div>

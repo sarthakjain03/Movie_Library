@@ -49,7 +49,7 @@ export default function Details({children, media_type, id}) {
 
   return (
     <div>
-      <div className='m-6 p-2 w-[200px] bg-slate-700 rounded-lg relative cursor-pointer border-2 border-slate-700 hover:border-yellow-300' onClick={handleOpen}>
+      <div className='md:m-6 m-3 p-2 w-[200px] bg-slate-700 rounded-lg relative cursor-pointer border-2 border-slate-700 hover:border-yellow-300' onClick={handleOpen}>
         {children}
       </div>
       <Modal

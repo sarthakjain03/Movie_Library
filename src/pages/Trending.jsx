@@ -15,9 +15,9 @@ const Trending = () => {
   const [page, setPage] = useState(1)
   
   const normalLink =
-    "text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium";
+    "text-white border-[1px] py-1 px-5 rounded-md hover:text-black hover:bg-white font-pagehead font-medium md:mx-4";
   const activeLink =
-    "border-[1px] py-1 px-5 rounded-md text-black bg-white font-pagehead font-medium";
+    "border-[1px] py-1 px-5 rounded-md text-black bg-white font-pagehead font-medium md:mx-4";
 
   const fetchTrending = async () => {
     const { data } = await axios.get(
@@ -42,7 +42,7 @@ const Trending = () => {
     <div>
       <Header title="Trending" />
       <div className="flex justify-center">
-        <div className="flex justify-around items-center my-4 md:w-[30%]">
+        <div className="flex md:justify-center justify-around items-center my-4 w-3/4">
           <button
             type="button"
             className={activeTrendingLink.all ? activeLink : normalLink}

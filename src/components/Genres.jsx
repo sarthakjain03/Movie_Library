@@ -35,7 +35,7 @@ const Genres = ({type, selectedGenres, setSelectedGenres, genres, setGenres, set
   }
 
   return (
-    <div className="flex justify-center px-[70px]">
+    <div className="flex justify-center md:px-[70px] px-[10px]">
       <div className="flex flex-wrap justify-center items-center my-3">
         { selectedGenres && selectedGenres.map((genre) => (
           <Chip 
